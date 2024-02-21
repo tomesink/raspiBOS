@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+ 
+# exit if any command fails
+set -e 
+
+# Exit if any undefined variable is used
+set -u
+
+# Exit if any command in a pipeline exits
+set -o pipefail
+
+# Enable the err trap, code will get called when an error is detected
+set -o errtrace 
+
+
+trap "echo ERROR: There was an error in ${FUNCNAME-main context}, on line $LINENO. Details to follow" ERR
+
+

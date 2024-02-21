@@ -1,8 +1,11 @@
 #!/bin/bash
 
+#source ./error_handling
+source "$(dirname "$BASH_SOURCE")/error_handling"
+
 # Prevent annoying debian error messages
-echo "export LC_ALL=C" >>~/.bashrc
+# echo "export LC_ALL=C" >>~/.bashrc
 
 # Update the operating system and all installed SW packages
-sudo apt update
-sudo apt full-upgrade
+apt update
+apt full-upgrade -y

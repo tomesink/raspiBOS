@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Prevent annoying debian error messages
+echo "export LC_ALL=C" >>~/.bashrc
+
+# Update the operating system and all installed SW packages
+sudo apt update
+sudo apt full-upgrade

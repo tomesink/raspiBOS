@@ -1,0 +1,20 @@
+#!/bin/bash
+
+    # create a new user
+    sudo useradd -m newuser
+
+    # assign the user to a group
+    sudo usermod -a -G somegroup newuser
+
+    # remove the password requirement for the new user (Not Recommended)
+    sudo passwd -d newuser
+
+    # switch to the new user and execute commands
+    sudo -u newuser bash -c 'exec $SHELL -l'
+
+    # put the commands for the new user below, for instance:
+    ls -la
+
+    # switch back to the original user
+    exit
+

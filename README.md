@@ -1,2 +1,2 @@
 # raspiBOS
-Pre-built RaspiBolt Linux Distribution
+[RaspiBolt](https://raspibolt.org/) installation scripts

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Update the operating system and all installed SW packages
+apt update
+apt full-upgrade -y
+
+# Install necessary SW
+PROGRAMS="git hdparm"
+
+sudo apt install $PROGRAMS -y

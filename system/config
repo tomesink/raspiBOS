@@ -1,6 +1,10 @@
 #!/bin/bash
 
-PROGRAMS="git hdparm"
-sudo apt install $PROGRAMS
+device="/dev/sda"
 
-lsblk -pli
+if lsblk -pli | grep -q "$device"; then
+    echo "$device is connected."
+else
+     echo "$device is not connected."
+     false
+fi

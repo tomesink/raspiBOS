@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Check if a disc is connected
 device="/dev/sda"
 
 if lsblk -pli | grep -q "$device"; then
@@ -7,4 +8,19 @@ if lsblk -pli | grep -q "$device"; then
 else
      echo "$device is not connected."
      false
+fi
+
+# create a variable speed and assign it the value of the disk read speed in MB/s
+# use sudo hdparm -t --direct /dev/sda to measure the speed
+# use grep and sed to extract the speed value and remove the decimal part
+echo "Measuring the speed..."
+speed=$(sudo hdparm -t --direct $device | pv -cN hdparm | grep -oP '=\s+\K[0-9.]+(?= MB/sec)' | sed 's/\.[0-9]*//')
+
+echo "The disk read speed is: $speed MB/s"
+
+# use the speed variable in the if-else statement
+if [ $(( speed > 50 )) -eq 1 ]; then
+   echo "The read speed is more than 50 MB/s"
+else
+   echo "The read speed is less than or equal to 50 MB/s"
 fi

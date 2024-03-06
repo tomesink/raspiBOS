@@ -1,12 +1,1 @@
-#!/bin/bash
-
-#source ./error_handling
-source "$(dirname "$BASH_SOURCE")/error_handling"
-
-# Prevent annoying debian error messages
-echo "export LC_ALL=C" >>~/.bashrc
-
-source "$(dirname "$BASH_SOURCE")/config"
-
-source "$(dirname "$BASH_SOURCE")/install"
-
+sh: 1: shfmt: not found

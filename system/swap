@@ -5,9 +5,12 @@ SWAPFILE="/etc/dphys-swapfile"
 
 # Check if the file exists
 if [ -f "$SWAPFILE" ]; then
-    # Use sed to comment out the CONF_SWAPSIZE line if it is not already commented
-    sed -i '/^CONF_SWAPSIZE=/ s/^/#/' "$SWAPFILE"
-    echo "CONF_SWAPSIZE line has been commented out."
+	# Use sed to comment out the CONF_SWAPSIZE line if it is not already commented
+	sed -i '/^CONF_SWAPSIZE=/ s/^/#/' "$SWAPFILE"
+	echo "CONF_SWAPSIZE line has been commented out."
 else
-    echo "Swap file configuration does not exist."
+	echo "Swap file configuration does not exist."
 fi
+
+dphys-swapfile install
+systemctl restart dphys-swapfile.service
